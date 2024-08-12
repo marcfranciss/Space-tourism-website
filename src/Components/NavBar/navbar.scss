@@ -1,0 +1,60 @@
+@use "../../sass/abstracts/" as *;
+header {
+    // width: inherit;
+    width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+.nav-logo {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 4rem;
+    a img { 
+    width: 3rem;
+    height: 3rem;
+    margin-right: 4rem;
+    }
+    .line-design {
+        position: absolute;
+        z-index: 1;
+        width: 560px;
+        height: 1px;
+        border: 1px solid rgb(151, 151, 151);
+        left: 100%;
+    }
+}
+.nav-links {
+    height: 96px;
+    background-color: $clr-accent-500;
+    backdrop-filter: blur(80px);
+    padding-left: calc(159px - 24px);
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    a {
+        padding-inline: 1.5rem;
+        height: 100%;
+        align-content: center;
+        text-transform: uppercase;
+        @include preset-800;
+        color: $clr-accent;
+        transition: all 0.2s ease-in-out;
+        strong {
+            margin-right: 12px;
+        }
+
+    &:hover {
+        border-bottom: 3px solid $clr-accent;
+    }
+    }           
+}
+.link-active {
+    border-bottom: 3px solid $clr-accent;
+}

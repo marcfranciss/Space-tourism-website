@@ -1,0 +1,84 @@
+@use "../../sass//abstracts/" as *;
+
+body {
+    background-image: url("../../assets/home/background-home-desktop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-attachment: fixed;
+    background-color: $clr-primary;
+}
+
+main {
+    padding: 128px 165px;
+}
+.main-container {
+    padding-top: 289px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.text-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    span {
+        color: $clr-blue-300;
+        @include preset-500;
+    }
+    h1 {
+        color: $clr-accent;
+        @include preset-100;
+    }
+    p {
+        color: $clr-blue-300;
+        @include preset-900;
+    }
+}
+
+.image-container {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+.circle {
+    position: relative;
+    width: 272px;
+    height: 272px;
+    background-color: $clr-accent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    h3 {
+        color: $clr-blue-900;
+        @include preset-400;
+        cursor: pointer;
+    }
+}
+
+.circle:hover::after {
+    content: "";
+    position: absolute;
+    width: calc(272px + (88px * 2));
+    height: calc(272px + (88px * 2));
+    background-color: $clr-accent;
+    opacity: 0.10;
+    border-radius: 50%;
+    top: -88px;
+    left: -88px;
+    z-index: -1;
+    
+    animation: 0.8s hoverEffect ease-in-out;
+}
+@keyframes hoverEffect {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.10;
+    }
+}

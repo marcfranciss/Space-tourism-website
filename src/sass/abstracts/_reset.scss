@@ -1,0 +1,32 @@
+*, *::after, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+#root {
+    max-width: 1440px;
+}
+img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+ul, ol {
+    all: unset;
+    list-style: none;
+}
+button {
+    all: unset;
+}
+
+body {
+    min-width: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
