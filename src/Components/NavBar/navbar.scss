@@ -1,23 +1,44 @@
 @use "../../sass/abstracts/" as *;
 header {
-    // width: inherit;
-    width: 1440px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: 1.5rem;
+
+    @media (max-width: 60em) {
+        margin-top: 0;
+    }
+    @media (max-width: 40em) {
+        position: relative;
+        padding: 1.5rem;
+    }
 }
 .nav-logo {
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 4rem;
+    margin-left: 4rem;
+
+    @media (max-width: 60em) {
+        margin-left: 2.5rem;
+    }
+    @media (max-width: 40em) {
+        margin-left: 0;
+    }
+
     a img { 
+        cursor: pointer;
     width: 3rem;
     height: 3rem;
     margin-right: 4rem;
+
+        @media (max-width: 40em) {
+            width: 40px;
+            height: 40px;
+            margin-right: 0;
+        }
     }
     .line-design {
         position: absolute;
@@ -26,6 +47,9 @@ header {
         height: 1px;
         border: 1px solid rgb(151, 151, 151);
         left: 100%;
+        @media (max-width: 86em) {
+            display: none;
+        }
     }
 }
 .nav-links {
@@ -37,8 +61,16 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    
-    a {
+
+        @media (max-width: 60em) {
+            padding-left: calc(117px - 24px);
+            padding-right: 0;
+        }
+        @media (max-width: 40em) {
+            display: none;
+        }
+    }    
+.nav-links a, .mobile-nav-links a {
         padding-inline: 1.5rem;
         height: 100%;
         align-content: center;
@@ -46,15 +78,145 @@ header {
         @include preset-800;
         color: $clr-accent;
         transition: all 0.2s ease-in-out;
+            @media (max-width: 40em) {
+                position: relative;
+                width: 100%;
+                height: fit-content;
+                // line-height: 0;
+            }
+        
         strong {
             margin-right: 12px;
+            cursor: pointer;
         }
 
-    &:hover {
-        border-bottom: 3px solid $clr-accent;
-    }
-    }           
+        &:hover {
+            border-bottom: 3px solid $clr-accent-600;
+            @media (max-width: 40em) {
+                border-bottom: 0;
+                border-right: 3px solid $clr-accent-600;
+            }
+        }        
 }
 .link-active {
     border-bottom: 3px solid $clr-accent;
+    @media (max-width: 40em) {
+        border-bottom: 0;
+        border-right: 3px solid $clr-accent;
+    }
+}
+.burger {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    img {cursor: pointer;}
+}
+dialog {
+    all: unset;
+}
+#nav-modal {
+    position: absolute;
+    background: transparent;
+    top: 0;
+    right: 0;
+    z-index: 9999;
+    width: 254px;
+    min-height: 100vh;
+}
+@keyframes openAnimation {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes closeAnimation {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
+  
+  #nav-modal.open {
+    animation: openAnimation 0.5s ease forwards;
+  }
+  
+  #nav-modal.close {
+    animation: closeAnimation 0.5s ease forwards;
+  }
+.mobile-nav-links {
+    min-height: 100vh;
+    width: 100%;
+    background-color: rgb(11, 13, 23, 15%);
+    backdrop-filter: blur(80px);
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    a {
+        min-height: 100%;
+        line-height: normal;
+        padding-inline: 0;
+    }
+    .close-icon {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+        align-self: flex-end;
+        margin: 2rem 1.5rem;
+        img {
+            cursor: pointer;
+        }
+    }
+}
+@media (min-width: 40em) {
+    .mobile-nav-links, .burger {display: none;}
+}
+
+.close-icon:hover::before, .burger:hover::before {
+    content: "";
+    position: absolute;
+    background-color: $clr-accent-600;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    top: -18px;
+    left: -18px;
+    animation: beat 2.5s infinite;
+    z-index: -2;
+}
+.nav-logo:hover::before {
+    content: "";
+    position: absolute;
+    background-color: $clr-accent-600;
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    top: -19px;
+    left: -19px;
+    animation: beat 2.5s infinite;
+    z-index: -2;
+    @media (max-width: 40em) {
+        width: 70px;
+        height: 70px;
+        top: -15px;
+        left: -15px;
+    }
+}
+@keyframes beat {
+    from {
+        opacity: 20%;
+    } to {
+        opacity: 80%;
+    }
+    
 }
