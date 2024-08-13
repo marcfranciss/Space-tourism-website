@@ -32,7 +32,7 @@ button {
 }
 
 body {
-  min-width: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,9 +44,29 @@ body {
   background-size: cover;
   background-color: rgb(11, 13, 23);
 }
+@media (max-width: 60em) {
+  body {
+    background-image: url("../../assets/home/background-home-tablet.jpg");
+  }
+}
+@media (max-width: 40em) {
+  body {
+    background-image: url("../../assets/home/background-home-mobile.jpg");
+  }
+}
 
 main {
   padding: 128px 165px;
+}
+@media (max-width: 60em) {
+  main {
+    padding-inline: 2.5rem;
+  }
+}
+@media (max-width: 40em) {
+  main {
+    padding: 1.5rem;
+  }
 }
 
 .main-container {
@@ -54,6 +74,18 @@ main {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 4.125rem;
+}
+@media (max-width: 60em) {
+  .main-container {
+    padding-top: 0;
+    flex-direction: column;
+  }
+}
+@media (max-width: 40em) {
+  .main-container {
+    gap: 0;
+  }
 }
 
 .text-container {
@@ -61,6 +93,19 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+}
+@media (max-width: 60em) {
+  .text-container {
+    width: 100%;
+    padding-inline: 5.5rem;
+    align-items: center;
+    text-align: center;
+  }
+}
+@media (max-width: 40em) {
+  .text-container {
+    padding-inline: 0;
+  }
 }
 .text-container span {
   color: rgb(208, 214, 249);
@@ -70,6 +115,15 @@ main {
   line-height: 33.6%;
   letter-spacing: 4px;
 }
+@media (max-width: 40em) {
+  .text-container span {
+    font-family: "Bellefair";
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 32.1%;
+    letter-spacing: 0px;
+  }
+}
 .text-container h1 {
   color: rgb(255, 255, 255);
   font-family: "Bellefair";
@@ -77,6 +131,12 @@ main {
   font-size: 144px;
   line-height: 171.9%;
   letter-spacing: 0px;
+}
+@media (max-width: 40em) {
+  .text-container h1 {
+    font-size: 5rem;
+    line-height: 92px;
+  }
 }
 .text-container p {
   color: rgb(208, 214, 249);
@@ -86,11 +146,23 @@ main {
   line-height: 180%;
   letter-spacing: 0px;
 }
+@media (max-width: 40em) {
+  .text-container p {
+    font-size: 15px;
+    text-align: center;
+  }
+}
 
 .image-container {
   width: 50%;
   display: flex;
   justify-content: flex-end;
+}
+@media (max-width: 60em) {
+  .image-container {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .circle {
@@ -102,9 +174,43 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
-.circle h3 {
+.circle:hover::after {
+  content: "";
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.1;
+  border-radius: 50%;
+  z-index: -1;
+  animation: 0.8s hoverEffect ease-in-out;
+  width: 448px;
+  height: 448px;
+  top: -88px;
+  left: -88px;
+}
+@media (max-width: 40em) {
+  .circle {
+    width: 144px;
+    height: 144px;
+    margin-block: 119px;
+  }
+  .circle:hover::after {
+    width: 232px;
+    height: 232px;
+    top: -44px;
+    left: -44px;
+  }
+}
+.circle a {
+  height: inherit;
+  width: inherit;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.circle a h3 {
+  position: relative;
   color: rgb(11, 13, 23);
   font-family: "Bellefair";
   font-weight: 400;
@@ -113,19 +219,10 @@ main {
   letter-spacing: 0px;
   cursor: pointer;
 }
-
-.circle:hover::after {
-  content: "";
-  position: absolute;
-  width: 448px;
-  height: 448px;
-  background-color: rgb(255, 255, 255);
-  opacity: 0.1;
-  border-radius: 50%;
-  top: -88px;
-  left: -88px;
-  z-index: -1;
-  animation: 0.8s hoverEffect ease-in-out;
+@media (max-width: 40em) {
+  .circle a h3 {
+    font-size: 20px;
+  }
 }
 
 @keyframes hoverEffect {

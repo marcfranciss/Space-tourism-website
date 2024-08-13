@@ -4,36 +4,81 @@ body {
     background-image: url("../../assets/home/background-home-desktop.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    // background-attachment: fixed;
     background-color: $clr-primary;
+
+    @media (max-width: 60em) {
+        background-image: url("../../assets/home/background-home-tablet.jpg");
+    }
+    @media (max-width: 40em) {
+        background-image: url("../../assets/home/background-home-mobile.jpg");
+    }
 }
 
 main {
     padding: 128px 165px;
+
+    @media (max-width: 60em) {
+        padding-inline: 2.5rem;
+    }
+    @media (max-width: 40em) {
+        padding: 1.5rem;
+    }
 }
 .main-container {
     padding-top: 289px;
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: calc(1rem * (66px / 16px));
+
+        @media (max-width: 60em) {
+            padding-top: 0;
+            flex-direction: column;
+        }
+        @media (max-width: 40em) {
+            gap: 0;
+        }
 }
 .text-container {
     width: 50%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    
+        @media (max-width: 60em) {
+            width: 100%;
+            padding-inline: 5.5rem;
+            align-items: center;
+            text-align: center;
+        }
+        @media (max-width: 40em) {
+            padding-inline: 0;
+        }
 
     span {
         color: $clr-blue-300;
         @include preset-500;
+
+        @media (max-width: 40em) {
+            @include preset-600;
+        }
     }
     h1 {
         color: $clr-accent;
         @include preset-100;
+
+        @media (max-width: 40em) {
+            font-size: 5rem;
+            line-height: 92px;
+        }
     }
     p {
         color: $clr-blue-300;
         @include preset-900;
+        @media (max-width: 40em) {
+            font-size: 15px;
+            text-align: center;
+        }
     }
 }
 
@@ -41,7 +86,13 @@ main {
     width: 50%;
     display: flex;
     justify-content: flex-end;
+
+        @media (max-width: 60em) {
+            width: 100%;
+            justify-content: center;
+        }
 }
+
 .circle {
     position: relative;
     width: 272px;
@@ -51,29 +102,53 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    &:hover::after {
+        content: "";
+        position: absolute;
+        background-color: $clr-accent;
+        opacity: 0.10;
+        border-radius: 50%;
+        z-index: -1;
+        animation: 0.8s hoverEffect ease-in-out;
+        width: calc((272px) + (88px * 2));
+        height: calc((272px) + (88px  * 2));
+        top: -88px;
+        left: -88px;
+    }
+    @media (max-width: 40em) {
+        width: 144px;
+        height: 144px;
+        margin-block: 119px;
 
-    h3 {
-        color: $clr-blue-900;
-        @include preset-400;
-        cursor: pointer;
+        &:hover::after {
+            width: calc((144px) + (44px * 2));
+            height: calc((144px) + (44px  * 2));
+            top: -44px;
+            left: -44px;
+        }
+    }
+
+    a {
+        height: inherit;
+        width: inherit;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;  
+        h3 {
+            position: relative;
+            color: $clr-blue-900;
+            @include preset-400;
+            cursor: pointer;
+
+            @media (max-width: 40em) {
+                font-size: 20px;
+            }
+        }
     }
 }
 
-.circle:hover::after {
-    content: "";
-    position: absolute;
-    width: calc(272px + (88px * 2));
-    height: calc(272px + (88px * 2));
-    background-color: $clr-accent;
-    opacity: 0.10;
-    border-radius: 50%;
-    top: -88px;
-    left: -88px;
-    z-index: -1;
-    
-    animation: 0.8s hoverEffect ease-in-out;
-}
+
 @keyframes hoverEffect {
     0% {
         opacity: 0;
