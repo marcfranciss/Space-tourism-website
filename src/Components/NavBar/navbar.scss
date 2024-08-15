@@ -6,10 +6,10 @@ header {
     align-items: center;
     margin-top: 1.5rem;
 
-    @media (max-width: 60em) {
+    @media (max-width: $tablet) {
         margin-top: 0;
     }
-    @media (max-width: 40em) {
+    @media (max-width: $mobile) {
         position: relative;
         padding: 1.5rem;
     }
@@ -19,25 +19,24 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-left: 4rem;
+    width: 50%;
 
-    @media (max-width: 60em) {
-        margin-left: 2.5rem;
+    @media (max-width: $tablet) {
+        margin-inline: 2.5rem;
+        width: auto;
     }
-    @media (max-width: 40em) {
-        margin-left: 0;
+    @media (max-width: $mobile) {
+        margin-inline: 0;
     }
 
     a img { 
         cursor: pointer;
-    width: 3rem;
-    height: 3rem;
-    margin-right: 4rem;
+        width: 3rem;
+        height: 3rem;
 
-        @media (max-width: 40em) {
+        @media (max-width: $mobile) {
             width: 40px;
             height: 40px;
-            margin-right: 0;
         }
     }
     .line-design {
@@ -46,39 +45,50 @@ header {
         width: 560px;
         height: 1px;
         border: 1px solid rgb(151, 151, 151);
-        left: 100%;
-        @media (max-width: 86em) {
+        right: -24px;
+        opacity: 0.24;
+        @media (max-width: $tablet){
             display: none;
         }
     }
 }
 .nav-links {
+    width: 50%;
     height: 96px;
     background-color: $clr-accent-500;
     backdrop-filter: blur(80px);
-    padding-left: calc(159px - 24px);
-    padding-right: 1rem;
+    padding-inline: 4rem;
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 3rem;
 
-        @media (max-width: 60em) {
-            padding-left: calc(117px - 24px);
-            padding-right: 0;
+        @media (max-width: $tablet) {
+            width: 100%;
+            padding-inline: 2.5rem;
+            
         }
-        @media (max-width: 40em) {
+        @media (max-width: $mobile) {
             display: none;
         }
     }    
 .nav-links a, .mobile-nav-links a {
-        padding-inline: 1.5rem;
+        // padding-inline: 1.5rem;
         height: 100%;
         align-content: center;
         text-transform: uppercase;
         @include preset-800;
         color: $clr-accent;
-        transition: all 0.2s ease-in-out;
-            @media (max-width: 40em) {
+
+        &:first-child {
+            margin-left: auto;
+        }
+            @media (max-width: $tablet) {
+                &:first-child {
+                    margin-left: auto;
+                }
+            }
+            @media (max-width: $mobile) {
                 position: relative;
                 width: 100%;
                 height: fit-content;
@@ -92,7 +102,7 @@ header {
 
         &:hover {
             border-bottom: 3px solid $clr-accent-600;
-            @media (max-width: 40em) {
+            @media (max-width: $mobile) {
                 border-bottom: 0;
                 border-right: 3px solid $clr-accent-600;
             }
@@ -100,7 +110,7 @@ header {
 }
 .link-active {
     border-bottom: 3px solid $clr-accent;
-    @media (max-width: 40em) {
+    @media (max-width: $mobile) {
         border-bottom: 0;
         border-right: 3px solid $clr-accent;
     }
@@ -122,27 +132,11 @@ dialog {
     z-index: 9999;
     width: 254px;
     min-height: 100vh;
+    display: none;
+    @media (max-width: $mobile) {
+        display: block;
+    }
 }
-@keyframes openAnimation {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes closeAnimation {
-    0% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-  }
-  
   #nav-modal.open {
     animation: openAnimation 0.5s ease forwards;
   }
@@ -178,7 +172,7 @@ dialog {
         }
     }
 }
-@media (min-width: 40em) {
+@media (min-width: 30rem) {
     .mobile-nav-links, .burger {display: none;}
 }
 
@@ -194,7 +188,14 @@ dialog {
     animation: beat 2.5s infinite;
     z-index: -2;
 }
-.nav-logo:hover::before {
+.logo-container {
+    position: relative;
+    margin-inline: 64px;
+    @media (max-width: 60rem) {
+        margin: 0;
+    }
+}
+.logo-container:hover::before {
     content: "";
     position: absolute;
     background-color: $clr-accent-600;
@@ -205,7 +206,7 @@ dialog {
     left: -19px;
     animation: beat 2.5s infinite;
     z-index: -2;
-    @media (max-width: 40em) {
+    @media (max-width: $mobile) {
         width: 70px;
         height: 70px;
         top: -15px;

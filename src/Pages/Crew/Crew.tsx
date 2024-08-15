@@ -1,47 +1,63 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { fetchAPIbyCategory } from "../../Components/utils";
+import "./crew.scss";
+import PageHeader from "../../Components/PageHeader/PageHeader";
+import Topic from "../../Components/Topic/Topic";
+import Selectors from "../../Components/Selectors/Selectors";
+
+interface CrewData {
+  name: string;
+  images: { png: string };
+  role: string;
+  bio: string;
+}
 
 const Crew = () => {
-  const [message, setMessage] = useState<string | null>(null);
-  const [imageData, setImageData] = useState<string>(
-    "./assets/destination/image-mars.png"
-  );
-  const baseURL = "http://localhost:5000/api/data";
+  const [componentData, setComponentData] = useState<CrewData[]>([]);
+  const [display, setDisplay] = useState<number>(0);
 
-  const fetchAsyncAPI = async (
-    URL: string,
-    category: string,
-    indexNum: number
-  ) => {
-    const response = await axios.get(URL);
-    const jsonData = response.data;
-    const jsonEndpoint = jsonData[category][indexNum].images.png;
-    setMessage(jsonEndpoint);
-    console.log(jsonData[category][indexNum].images.png);
-    console.log(jsonEndpoint);
-  };
-  const fetchAPI = async (URL: string, category: string, indexNum: number) => {
-    const response = await axios.get(URL);
-    const jsonData = response.data;
-    const jsonEndpoint = jsonData[category][indexNum].images.png;
-
-    return jsonEndpoint;
-  };
-
+  /* Will set components data to fetch data*/
   useEffect(() => {
-    fetchAsyncAPI(baseURL, "destinations", 0);
+    const fetchData = async () => {
+      try {
+        const data: CrewData[] = await fetchAPIbyCategory("crew");
+        setComponentData(data);
+      } catch (error) {
+        console.error("Please check for error in fetching data.");
+      }
+    };
+    fetchData();
   }, []);
-
-  const handleImage = async () => {
-    const moonData = await fetchAPI(baseURL, "destinations", 2);
-    setImageData(moonData);
-  };
   return (
-    <main>
-      <h1>Hello from React!</h1>
-      <img src={`./src/${imageData}`} alt='' />
-      <p>{message}</p>
-      <button onClick={handleImage}>Change image</button>
+    <main id='crewPage'>
+      <section className='inner-container'>
+        <PageHeader title='Meet your crew' pageNum='02' />
+        {componentData.map(
+          (crews: any, indexNum: number) =>
+            display == indexNum && (
+              <article key={crews.name} className='content-container'>
+                <div id='crews-name' className='details-container'>
+                  <h2 className='inner-header'>{crews.role}</h2>
+                  <Topic title={crews.name} description={crews.bio} />
+                  <Selectors
+                    selectorType={"bullets"}
+                    selectorCount={componentData.length}
+                    selectorFn={setDisplay}
+                    currActive={display}
+                  />
+                </div>
+                <div className='image-container'>
+                  <img
+                    className='contain'
+                    loading='lazy'
+                    src={crews.images.webp}
+                    alt={crews.name}
+                  />
+                </div>
+              </article>
+            )
+        )}
+      </section>
     </main>
   );
 };

@@ -1,41 +1,43 @@
 @use "../../sass//abstracts/" as *;
 
+/* Initial logic before creating useBodyBackground hook
 body {
     background-image: url("../../assets/home/background-home-desktop.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: $clr-primary;
 
-    @media (max-width: 60em) {
+    @media (max-width: $tablet) {
         background-image: url("../../assets/home/background-home-tablet.jpg");
     }
-    @media (max-width: 40em) {
+    @media (max-width: $mobile) {
         background-image: url("../../assets/home/background-home-mobile.jpg");
     }
-}
+} */
 
 main {
     padding: 128px 165px;
 
-    @media (max-width: 60em) {
+    @media (max-width: $tablet) {
         padding-inline: 2.5rem;
     }
-    @media (max-width: 40em) {
+    @media (max-width: $mobile) {
         padding: 1.5rem;
     }
 }
 .main-container {
-    padding-top: 289px;
+    min-height: 100vh;
+    margin-top: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: calc(1rem * (66px / 16px));
 
-        @media (max-width: 60em) {
+        @media (max-width: $tablet) {
             padding-top: 0;
             flex-direction: column;
         }
-        @media (max-width: 40em) {
+        @media (max-width: $mobile) {
             gap: 0;
         }
 }
@@ -45,13 +47,13 @@ main {
     flex-direction: column;
     gap: 1.5rem;
     
-        @media (max-width: 60em) {
+        @media (max-width: $tablet) {
             width: 100%;
             padding-inline: 5.5rem;
             align-items: center;
             text-align: center;
         }
-        @media (max-width: 40em) {
+        @media (max-width: $mobile) {
             padding-inline: 0;
         }
 
@@ -59,23 +61,25 @@ main {
         color: $clr-blue-300;
         @include preset-500;
 
-        @media (max-width: 40em) {
+        @media (max-width: $mobile) {
             @include preset-600;
         }
     }
     h1 {
         color: $clr-accent;
+        animation: 1.5s textOnload linear;  
         @include preset-100;
 
-        @media (max-width: 40em) {
+        @media (max-width: $mobile) {
             font-size: 5rem;
             line-height: 92px;
         }
     }
     p {
         color: $clr-blue-300;
+        animation: 1.5s textOnload linear;  
         @include preset-900;
-        @media (max-width: 40em) {
+        @media (max-width: $mobile) {
             font-size: 15px;
             text-align: center;
         }
@@ -87,7 +91,7 @@ main {
     display: flex;
     justify-content: flex-end;
 
-        @media (max-width: 60em) {
+        @media (max-width: $tablet) {
             width: 100%;
             justify-content: center;
         }
@@ -115,7 +119,7 @@ main {
         top: -88px;
         left: -88px;
     }
-    @media (max-width: 40em) {
+    @media (max-width: $mobile) {
         width: 144px;
         height: 144px;
         margin-block: 119px;
@@ -141,7 +145,7 @@ main {
             @include preset-400;
             cursor: pointer;
 
-            @media (max-width: 40em) {
+            @media (max-width: $mobile) {
                 font-size: 20px;
             }
         }

@@ -8,6 +8,7 @@
 
 #root {
   max-width: 1440px;
+  width: 100%;
 }
 
 img, video {
@@ -38,51 +39,192 @@ body {
   align-items: center;
 }
 
-body {
-  background-image: url("../../assets/home/background-home-desktop.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-color: rgb(11, 13, 23);
+.inner-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-@media (max-width: 60em) {
-  body {
-    background-image: url("../../assets/home/background-home-tablet.jpg");
-  }
-}
-@media (max-width: 40em) {
-  body {
-    background-image: url("../../assets/home/background-home-mobile.jpg");
+@media (max-width: 30rem) {
+  .inner-container {
+    align-items: center;
   }
 }
 
+.content-container {
+  max-width: 1110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+@media (max-width: 60rem) {
+  .content-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+@media (max-width: 60rem) {
+  .image-container {
+    width: 100%;
+  }
+}
+.image-container img {
+  max-height: 676px;
+}
+@media (max-width: 60rem) {
+  .image-container img {
+    max-height: 560px;
+  }
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 50%;
+  padding: 133px 47px;
+  gap: 2.5rem;
+}
+@media (max-width: 60rem) {
+  .details-container {
+    width: 100%;
+    align-items: center;
+    padding: 11.5px 87px;
+    gap: 1.5rem;
+  }
+}
+@media (max-width: 30rem) {
+  .details-container {
+    padding: 0;
+  }
+}
+
+.inner-header {
+  font-family: "Bellefair";
+  font-weight: 400;
+  font-size: 2rem;
+  letter-spacing: 0px;
+  opacity: 50.42%;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+}
+@media (max-width: 60rem) {
+  .inner-header {
+    font-size: 24px;
+  }
+}
+@media (max-width: 30rem) {
+  .inner-header {
+    font-size: 18px;
+  }
+}
+@media (max-width: 60rem) {
+  .inner-header {
+    align-self: center;
+  }
+}
+
+@keyframes openAnimation {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes closeAnimation {
+  0% {
+    opacity: 1;
+    transform: translateY(30%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+@keyframes textOnload {
+  0% {
+    transform: translateX(5%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+.loader {
+  width: -moz-fit-content;
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  color: lightgray;
+  font-size: 30px;
+  -webkit-clip-path: inset(0 3ch 0 0);
+          clip-path: inset(0 3ch 0 0);
+  animation: l4 1s steps(4) infinite;
+}
+
+.loader:before {
+  content: "Loading...";
+}
+
+@keyframes l4 {
+  to {
+    -webkit-clip-path: inset(0 -1ch 0 0);
+            clip-path: inset(0 -1ch 0 0);
+  }
+}
+/* Initial logic before creating useBodyBackground hook
+body {
+    background-image: url("../../assets/home/background-home-desktop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: $clr-primary;
+
+    @media (max-width: $tablet) {
+        background-image: url("../../assets/home/background-home-tablet.jpg");
+    }
+    @media (max-width: $mobile) {
+        background-image: url("../../assets/home/background-home-mobile.jpg");
+    }
+} */
 main {
   padding: 128px 165px;
 }
-@media (max-width: 60em) {
+@media (max-width: 60rem) {
   main {
     padding-inline: 2.5rem;
   }
 }
-@media (max-width: 40em) {
+@media (max-width: 30rem) {
   main {
     padding: 1.5rem;
   }
 }
 
 .main-container {
-  padding-top: 289px;
+  min-height: 100vh;
+  margin-top: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 4.125rem;
 }
-@media (max-width: 60em) {
+@media (max-width: 60rem) {
   .main-container {
     padding-top: 0;
     flex-direction: column;
   }
 }
-@media (max-width: 40em) {
+@media (max-width: 30rem) {
   .main-container {
     gap: 0;
   }
@@ -94,7 +236,7 @@ main {
   flex-direction: column;
   gap: 1.5rem;
 }
-@media (max-width: 60em) {
+@media (max-width: 60rem) {
   .text-container {
     width: 100%;
     padding-inline: 5.5rem;
@@ -102,7 +244,7 @@ main {
     text-align: center;
   }
 }
-@media (max-width: 40em) {
+@media (max-width: 30rem) {
   .text-container {
     padding-inline: 0;
   }
@@ -112,27 +254,39 @@ main {
   font-family: "Barlow Condensed";
   font-weight: 400;
   font-size: 28px;
-  line-height: 33.6%;
   letter-spacing: 4px;
 }
-@media (max-width: 40em) {
+@media (max-width: 60rem) {
+  .text-container span {
+    font-size: 20px;
+  }
+}
+@media (max-width: 30rem) {
   .text-container span {
     font-family: "Bellefair";
     font-weight: 400;
     font-size: 28px;
-    line-height: 32.1%;
     letter-spacing: 0px;
+  }
+}
+@media (max-width: 30rem) and (max-width: 30rem) {
+  .text-container span {
+    font-size: 16px;
   }
 }
 .text-container h1 {
   color: rgb(255, 255, 255);
+  animation: 1.5s textOnload linear;
   font-family: "Bellefair";
   font-weight: 400;
   font-size: 144px;
-  line-height: 171.9%;
-  letter-spacing: 0px;
 }
-@media (max-width: 40em) {
+@media (max-width: 30rem) {
+  .text-container h1 {
+    font-size: 80px;
+  }
+}
+@media (max-width: 30rem) {
   .text-container h1 {
     font-size: 5rem;
     line-height: 92px;
@@ -140,13 +294,24 @@ main {
 }
 .text-container p {
   color: rgb(208, 214, 249);
+  animation: 1.5s textOnload linear;
   font-family: "Barlow";
   font-weight: 400;
   font-size: 18px;
   line-height: 180%;
   letter-spacing: 0px;
 }
-@media (max-width: 40em) {
+@media (max-width: 60rem) {
+  .text-container p {
+    font-size: 16px;
+  }
+}
+@media (max-width: 30rem) {
+  .text-container p {
+    font-size: 15px;
+  }
+}
+@media (max-width: 30rem) {
   .text-container p {
     font-size: 15px;
     text-align: center;
@@ -158,7 +323,7 @@ main {
   display: flex;
   justify-content: flex-end;
 }
-@media (max-width: 60em) {
+@media (max-width: 60rem) {
   .image-container {
     width: 100%;
     justify-content: center;
@@ -188,7 +353,7 @@ main {
   top: -88px;
   left: -88px;
 }
-@media (max-width: 40em) {
+@media (max-width: 30rem) {
   .circle {
     width: 144px;
     height: 144px;
@@ -215,11 +380,20 @@ main {
   font-family: "Bellefair";
   font-weight: 400;
   font-size: 2rem;
-  line-height: 36.7%;
   letter-spacing: 0px;
   cursor: pointer;
 }
-@media (max-width: 40em) {
+@media (max-width: 60rem) {
+  .circle a h3 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 30rem) {
+  .circle a h3 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 30rem) {
   .circle a h3 {
     font-size: 20px;
   }

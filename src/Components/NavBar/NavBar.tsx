@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <header>
       <div className='nav-logo'>
-        <Link to={""}>
+        <Link to={""} className='logo-container'>
           <img src={navLogo} alt='Webpage Logo: Star' />
         </Link>
         <div className='line-design'></div>
