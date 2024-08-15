@@ -1,0 +1,14 @@
+@use "../../sass/abstracts/" as *;
+
+#pageHeader {
+    & h1 {
+        color: $clr-accent;
+        text-transform: uppercase;
+        @include preset-500;
+
+        & strong {
+            opacity: 25%;
+            margin-right: 1.5rem;
+        }
+    }
+}

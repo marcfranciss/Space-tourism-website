@@ -1,0 +1,63 @@
+@use "../../sass/abstracts/" as *;
+
+#technologyPage {
+    padding-block: 3rem;
+    padding-left: 165px;
+    padding-right: 0;
+    @media (max-width: $tablet) {
+        padding: 0;
+    }
+    & #pageHeader {
+        padding-top: 2.5rem;
+        padding-inline: 2.5rem;
+    }
+
+    & .inner-container {
+        width: 100%;
+    }
+    & .content-container {
+        max-width: none;
+        width: 100%;
+    }
+
+    & .details-container {
+        flex-direction: row;
+        padding: 215px 0;
+        justify-content: center;
+        gap: 4rem;
+        @media (max-width: $tablet) {
+            order: 1;
+            flex-direction: column;
+            padding: 0 calc(88px + 40px);
+            align-items: center;
+            gap: 2.5rem;
+        }
+        @media (max-width: $mobile) {
+            padding-inline: 1.5rem;
+        }
+
+        & #pageTopic {
+            gap: 1.5rem; 
+            & dt {
+                @include preset-300;
+            }
+        }
+    }
+    & .image-container {
+        order: 0;
+        @media (max-width: $tablet) {
+            margin-top: 64px;
+            max-height: 460px;
+        }
+        & img {
+            max-height: none;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            @media (max-width: $tablet) {
+                object-fit: cover;
+                // object-position: center;
+            }
+        }
+    }
+}

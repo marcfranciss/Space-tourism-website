@@ -1,0 +1,21 @@
+@use "../../sass/abstracts/" as *;
+
+
+main#crewPage {
+    padding: 3rem 165px;
+    @media (max-width: $tablet) {
+        padding: 2.5rem;
+    }
+    @media (max-width: $mobile) {
+        padding: 1.5rem;
+    }
+
+}
+
+#crews-name #pageTopic dt {
+    @include preset-300;
+}
+.contain {
+    object-fit: contain;
+}
+

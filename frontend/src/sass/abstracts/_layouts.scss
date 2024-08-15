@@ -1,0 +1,72 @@
+@use "../abstracts/reset" as *;
+@use "../abstracts/typography" as *;
+@use "../abstracts/colors" as *;
+.inner-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    @media (max-width: $mobile) {
+        align-items: center;
+    }
+
+}
+
+.content-container {
+    max-width: 1110px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    @media (max-width: $tablet) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    @media (max-width: $tablet) {
+        width: 100%;
+    }
+    & img {
+        max-height: 676px;
+        @media (max-width: 60rem) {
+            max-height: 560px;
+        }
+    }
+}
+.details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+    
+    padding: 133px 47px;
+    gap: 2.5rem;
+    @media (max-width: $tablet) {
+        width: 100%;
+        align-items: center;
+        
+        padding: 11.5px 87px;
+        gap: 1.5rem;
+    }
+    @media (max-width: $mobile) {
+        padding: 0;
+    }
+}
+
+.inner-header {
+    @include preset-400;
+    opacity: 50.42%;
+    color: $clr-accent;
+    text-transform: uppercase;
+    
+    @media (max-width: $tablet) {
+        align-self: center;
+    }
+}

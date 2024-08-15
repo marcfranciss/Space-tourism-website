@@ -1,0 +1,100 @@
+@use "../../sass/abstracts/" as *;
+
+
+.text-selector {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    @media (max-width: $tablet) {
+        align-items: center;
+    }
+
+    & h3 {
+        @include preset-800;
+        color: $clr-blue-300;
+        text-transform: uppercase;
+        color: $clr-blue-300;
+        cursor: pointer;
+        height: 2rem;
+        &:hover {
+            border-bottom: 3px solid $clr-accent-600;
+        }        
+    }
+    & .activeIndex {
+        border-bottom: 3px solid $clr-accent;
+    }
+}
+
+.bullets-selector {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2.5rem;
+    @media (max-width: $tablet) {
+        align-items: center;
+        gap: 1rem;
+    }
+
+    & .bullets {
+        width: 15px;
+        height: 15px;
+        background-color: $clr-accent;
+        opacity: 17.44%;
+        border-radius: 50%;
+        cursor: pointer;
+
+        @media (max-width: $mobile) {
+        width: 10px;
+        height: 10px;
+        }
+        &.activeIndex {
+            opacity: 1;
+        }
+    }
+}
+
+.numbers-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2rem;
+    @media (max-width: $tablet) {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    & .numbers {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 1px solid $clr-accent;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $clr-accent;
+        @include preset-400;
+        cursor: pointer;
+
+        @media (max-width: $tablet) {
+            width: 56px;
+            height: 56px;
+        }
+        @media (max-width: $mobile) {
+            width: 40px;
+            height: 40px;
+        }
+
+        &:hover 
+            { background-color: $clr-accent-600;
+            border: none; }
+        &.activeIndex {
+            background-color: $clr-accent;
+            color: $clr-blue-900;
+        }
+    }
+}

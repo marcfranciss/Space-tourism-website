@@ -1,0 +1,36 @@
+*, *::after, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    cursor: default;
+}
+#root {
+    max-width: 1440px;
+    width: 100%;
+}
+img, video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+ul, ol {
+    all: unset;
+    list-style: none;
+}
+button {
+    all: unset;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+$tablet: 60rem;
+$mobile: 30rem;

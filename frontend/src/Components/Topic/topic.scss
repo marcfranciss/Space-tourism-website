@@ -1,0 +1,29 @@
+@use "../../sass/abstracts/" as *;
+
+#pageTopic {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    & dt {
+        @include preset-200;
+        color: $clr-accent;
+        text-transform: uppercase;  
+        animation: 1.5s textOnload linear;     
+    }
+    & dd {
+        @include preset-900;
+        color: $clr-blue-300;
+        animation: 1.5s textOnload linear;
+    }
+}
+@media (max-width: 60rem) {
+    #pageTopic {
+        align-items: center;
+
+        & dd, dt {
+            text-align: center;
+        }
+    }
+}

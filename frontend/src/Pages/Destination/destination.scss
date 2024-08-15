@@ -1,0 +1,82 @@
+@use "../../sass/abstracts/" as *;
+
+main#destinationPage {
+    padding-block: 3rem;
+    @media (max-width: $tablet) {
+        padding-inline: 3rem;
+    }
+    @media (max-width: $mobile) {
+        padding: 1.5rem;
+    }
+
+
+    & .planets-image {
+        width: 480px;
+        height: 480px;
+        animation: 30s around1 infinite;
+        &:hover {
+            animation-play-state: paused;
+        }
+        @media (max-width: 60rem) {
+            width: 300px;
+            height: 300px;
+            margin-block: 42px;
+        }
+        @media (max-width: 30rem) {
+            width: 150px;
+            height: 150px;
+            margin-block: 26.5px;
+        }
+    }
+
+@keyframes around1 {
+    from {
+    transform: rotate(0deg);
+    } to {
+        transform: rotate(360deg);
+    }
+}
+
+    & hr {
+        width: 100%;
+        background-color: rgb(151, 151, 151);
+        opacity: 25%;
+    }
+    & .misc-container {
+        display: flex;
+        flex-direction: row;
+        gap: 1.5rem;
+        @media (max-width: $tablet) {
+            align-items: center;
+        }
+        @media (max-width: $mobile) {
+            flex-direction: column;
+        }
+
+        & .distance-details, .time-details {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-transform: uppercase;
+            @media (max-width: $tablet) {
+                align-items: center;
+            }
+            & dt {
+                color: $clr-blue-300;
+                @include preset-700;
+                animation: 1.5s textOnload linear;
+            }
+            & dd {
+                color: $clr-accent;
+                @include preset-600;
+                animation: 1.5s textOnload linear;
+                @media (max-width: 30rem) {
+                    font-size: 28px;
+                }
+            }
+        }
+    }
+    & .activeIndex {
+        border-bottom: 3px solid $clr-accent;
+    }
+}
