@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchAPIbyCategory } from "../../Components/utils";
+import {
+  fetchAPIbyCategory,
+  fetchLocalbyCategory,
+} from "../../Components/utils";
 import "./crew.scss";
 import PageHeader from "../../Components/PageHeader/PageHeader";
 import Topic from "../../Components/Topic/Topic";
@@ -18,15 +21,26 @@ const Crew = () => {
 
   /* Will set components data to fetch data*/
   useEffect(() => {
-    const fetchData = async () => {
+    // const fetchData = async () => {
+    //   try {
+    //     const data: CrewData[] = await fetchAPIbyCategory("crew");
+    //     setComponentData(data);
+    //   } catch (error) {
+    //     console.error("Please check for error in fetching data.");
+    //   }
+    // };
+    // fetchData();
+
+    /* NOTE: Local API connetion for now, still can't find solution for Backend */
+    const getData = async () => {
       try {
-        const data: CrewData[] = await fetchAPIbyCategory("crew");
+        const data: CrewData[] = await fetchLocalbyCategory("crew");
         setComponentData(data);
       } catch (error) {
         console.error("Please check for error in fetching data.");
       }
     };
-    fetchData();
+    getData();
   }, []);
   return (
     <main id='crewPage'>

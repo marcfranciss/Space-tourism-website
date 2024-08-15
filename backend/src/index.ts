@@ -7,7 +7,7 @@ import dotenv from 'dotenv'
 const port = process.env.PORT || 5000;
 const app = express();
 const corsOptions = {
-    origin: "https://marcfranciss.github.io/Space-tourism-website",
+    origin: "https://localhost:5173",
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }

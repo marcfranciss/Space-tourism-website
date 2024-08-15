@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { fetchAPIbyCategory } from "../../Components/utils";
+import {
+  fetchAPIbyCategory,
+  fetchLocalbyCategory,
+} from "../../Components/utils";
 import PageHeader from "../../Components/PageHeader/PageHeader";
 import Selectors from "../../Components/Selectors/Selectors";
 import Topic from "../../Components/Topic/Topic";
@@ -18,15 +21,26 @@ const Technology = () => {
 
   /* Will set components data to fetch data*/
   useEffect(() => {
-    const fetchData = async () => {
+    // const fetchData = async () => {
+    //   try {
+    //     const data: TechnologyData[] = await fetchAPIbyCategory("technology");
+    //     setComponentData(data);
+    //   } catch (error) {
+    //     console.error("Please check for error in fetching data.");
+    //   }
+    // };
+    // fetchData();
+
+    /* NOTE: Local API connetion for now, still can't find solution for Backend */
+    const getData = async () => {
       try {
-        const data: TechnologyData[] = await fetchAPIbyCategory("technology");
+        const data: TechnologyData[] = await fetchLocalbyCategory("technology");
         setComponentData(data);
       } catch (error) {
         console.error("Please check for error in fetching data.");
       }
     };
-    fetchData();
+    getData();
   }, []);
 
   useEffect(() => {
